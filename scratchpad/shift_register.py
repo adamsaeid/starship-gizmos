@@ -6,7 +6,10 @@ latchPIN = 15
 clockPIN = 14
 
 up_button = Button(16)
+up_button_2 = Button(19)
 down_button = Button(17)
+down_button_2 = Button(20)
+
 
 dataPIN=Pin(dataPIN, Pin.OUT)
 latchPIN=Pin(latchPIN, Pin.OUT)
@@ -38,7 +41,10 @@ def handle_down_press():
     shift_update(bit_string,dataPIN,clockPIN,latchPIN)
 
 up_button.when_pressed = handle_up_press
+up_button_2.when_pressed = handle_up_press
+
 down_button.when_pressed = handle_down_press
+down_button_2.when_pressed = handle_down_press
 
 bit_string="00000011"
 shift_update(bit_string,dataPIN,clockPIN,latchPIN)
