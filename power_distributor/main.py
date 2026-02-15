@@ -1,6 +1,7 @@
 from machine import Pin
 from picozero import Button
 
+from power_indicators import PowerIndicators
 from power_distributor import PowerDistributor
 
 engine_button = Button(19)
@@ -17,7 +18,8 @@ pins = {
     'clock': clockPIN
 }
 
-power_distributor = PowerDistributor(4,4,4,pins)
+power_indicators = PowerIndicators(0, 0, 0,pins)
+power_distributor = PowerDistributor(4,4,4,power_indicators)
 
 weapon_button.when_pressed = power_distributor.add_wep_pip
 engine_button.when_pressed = power_distributor.add_eng_pip

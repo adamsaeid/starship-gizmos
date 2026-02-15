@@ -1,8 +1,8 @@
 from power_indicators import PowerIndicators
 
 class PowerDistributor:
-    def __init__(self, sys_power, eng_power, wep_power, pins):
-        self.power_indicators = PowerIndicators(sys_power, eng_power, wep_power, pins)
+    def __init__(self, sys_power, eng_power, wep_power, power_indicators):
+        self.power_indicators = power_indicators
         self.set_power(sys_power, eng_power, wep_power)
 
     def set_power(self, sys_power, eng_power, wep_power):
@@ -15,7 +15,7 @@ class PowerDistributor:
     # TODO: fix bug when zero pips in a system being drained
 
     def add_sys_pip(self):
-        print("add sys")
+        print("add sysz")
         new_sys_power = min(self.sys_power + 2, 8)
         new_eng_power = max(self.eng_power - 1, 0)
         new_wep_power = max(self.wep_power - 1, 0)
@@ -23,7 +23,7 @@ class PowerDistributor:
         self.set_power(new_sys_power, new_eng_power, new_wep_power)
 
     def add_eng_pip(self):
-        print("add eng")
+        print("add engz")
         new_eng_power = min(self.eng_power + 2, 8)
         new_sys_power = max(self.sys_power - 1, 0)
         new_wep_power = max(self.wep_power - 1, 0)
@@ -32,7 +32,7 @@ class PowerDistributor:
 
 
     def add_wep_pip(self):
-        print("add wep")
+        print("add wepz")
         new_wep_power = min(self.wep_power + 2, 8)
         new_sys_power = max(self.sys_power - 1, 0)
         new_eng_power = max(self.eng_power - 1, 0)
