@@ -1,7 +1,7 @@
 from machine import Pin
 from picozero import Button
 
-from power_indicators import PowerIndicators
+from power_distributor import PowerDistributor
 
 engine_button = Button(19)
 weapon_button = Button(17)
@@ -29,7 +29,7 @@ sys_indicator = {
     "power": 4
 }
 
-power_indicators = PowerIndicators(4,4,4,pins)
+power_distributor = PowerDistributor(4,4,4,pins)
 
 def increment_power(indicator, other_indicators):
     indicator["power"] = min(indicator["power"] + 2, 8)
@@ -42,7 +42,7 @@ def display_power():
     eng_power = engine_indicator.get('power')
     wep_power = weapon_indicator.get('power')
 
-    power_indicators.set_power(sys_power, eng_power, wep_power)
+    power_distributor.set_power(sys_power, eng_power, wep_power)
 
 def handle_press(indicator, other_indicators):
     increment_power(indicator, other_indicators)
